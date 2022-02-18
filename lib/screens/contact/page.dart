@@ -20,29 +20,25 @@ class _ContactPageState extends State<ContactPage> {
   ContactCreatedByMe? objContactModel;
   GetContactsModel? objGetContactsModel;
   ContactList contactList = ContactList();
+  Future? future;
 
   String get contactName => contactName;
   // int? newId;
   // List<ModelOfDatabaseContacts> contact = [];
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //   readC();
-    // print(contactList);
-    readContact();
-  }
+
 
   void readC() {
     readContact();
   }
 
-  Future<void> readContact() async {
+  Future<dynamic> readContact() async {
     contactsList = await objGetContactsModel!.contacts();
     for (int i = 0; i < contactsList.length; i++) {
       print(contactsList[i].name);
     }
+    return contactsList;
   }
+
 
   // @override
   // void initState() {
@@ -52,6 +48,16 @@ class _ContactPageState extends State<ContactPage> {
   // update(3,"sam","9996");
   //
   // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //   readC();
+    // print(contactList);
+    future=readContact();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
