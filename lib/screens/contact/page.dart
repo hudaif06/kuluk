@@ -30,13 +30,14 @@ class _ContactPageState extends State<ContactPage> {
     super.initState();
     //   readC();
     // print(contactList);
+    readContact();
   }
 
   void readC() {
     readContact();
   }
 
-  void readContact() async {
+  Future<void> readContact() async {
     contactsList = await objGetContactsModel!.contacts();
     for (int i = 0; i < contactsList.length; i++) {
       print(contactsList[i].name);
@@ -64,7 +65,15 @@ class _ContactPageState extends State<ContactPage> {
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(50), child: _appBar()),
-        body: _body(),
+        body: FutureBuilder(
+            future: readContact(),
+            builder: (context, snap) {
+              if (snap.hasData) {
+                return _body();
+              } else {
+                return CircularProgressIndicator();
+              }
+            }),
       ),
     ]);
   }
