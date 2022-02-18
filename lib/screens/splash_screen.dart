@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kuluk/screens/call/page.dart';
-import 'package:kuluk/screens/navigationPanel.dart';
+import 'package:kuluk_app/screens/navigationPanel.dart';
 
 class SplashScreen extends StatefulWidget {
   // final String contactName;
@@ -18,9 +17,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _navigatetofirstpage();
   }
-  _navigatetofirstpage()async{
-    await Future.delayed(const Duration(milliseconds: 1000),(){});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> NavigationPanelPage()));
+
+  _navigatetofirstpage() async {
+    await Future.delayed(const Duration(milliseconds: 1000), () {});
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => NavigationPanelPage()));
   }
 
   @override
@@ -30,13 +31,19 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  Widget _body(){
+  Widget _body() {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration:  const BoxDecoration(image: DecorationImage(image: AssetImage("assets/images/bg_image.png",),fit: BoxFit.cover)),
-      child: Image.asset("assets/images/logo.png",),
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                "assets/images/bg_image.png",
+              ),
+              fit: BoxFit.cover)),
+      child: Image.asset(
+        "assets/images/logo.png",
+      ),
     );
   }
 }
-

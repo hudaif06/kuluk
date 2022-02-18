@@ -1,15 +1,16 @@
 import 'dart:async';
-import 'package:kuluk/screens/get_contacts/presenter.dart';
-import 'package:flutter/widgets.dart';
-class Test{}
-void main() async {
 
+import 'package:flutter/widgets.dart';
+import 'package:kuluk_app/screens/get_contacts/presenter.dart';
+
+class Test {}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Open the database and store the reference.
   dynamic database = GetContactsModel().getContacts();
 
   // Define a function that inserts dogs into the database
-
 
   // Future<void> insertContact2(Contact contact) async {
   //   // Get a reference to the database.
@@ -134,7 +135,6 @@ void main() async {
   // await insertContact1(contact3);
   // await insertContact1(contact4);
 
-
   // Now, use the method above to retrieve all the dogs.
   print(await contacts()); // Prints a list that include Fido.
 
@@ -159,7 +159,7 @@ void main() async {
 class ContactCreatedByMe {
   final int id;
   final String name;
-  dynamic  phone;
+  dynamic phone;
 
   ContactCreatedByMe({
     required this.id,
@@ -184,4 +184,3 @@ class ContactCreatedByMe {
     return 'Contact{id: $id, name: $name, phone: $phone}';
   }
 }
-
