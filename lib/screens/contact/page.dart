@@ -26,19 +26,18 @@ class _ContactPageState extends State<ContactPage> {
   // int? newId;
   // List<ModelOfDatabaseContacts> contact = [];
 
-
   void readC() {
     readContact();
   }
 
-  Future<dynamic> readContact() async {
+  Future<List<ContactCreatedByMe>> readContact() async {
+    GetContactsModel? objGetContactsModel;
     contactsList = await objGetContactsModel!.contacts();
     for (int i = 0; i < contactsList.length; i++) {
       print(contactsList[i].name);
     }
     return contactsList;
   }
-
 
   // @override
   // void initState() {
@@ -54,8 +53,7 @@ class _ContactPageState extends State<ContactPage> {
     super.initState();
     //   readC();
     // print(contactList);
-    future=readContact();
-
+    future = readContact();
   }
 
   @override
@@ -72,7 +70,7 @@ class _ContactPageState extends State<ContactPage> {
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(50), child: _appBar()),
         body: FutureBuilder(
-            future: readContact(),
+            future: future,
             builder: (context, snap) {
               if (snap.hasData) {
                 return _body();
